@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Resume</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br>
+            <label for="resume">Upload Resume:</label>
+            <input type="file" name="resume" required><br>
+            <button type="submit">Upload</button>
+        </form>
+        <div class="recommendations">
+            {% if jobs %}
+                <h2>Recommended Jobs:</h2>
+                <ul>
+                    {% for job in jobs %}
+                        <li>{{ job }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
