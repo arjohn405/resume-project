@@ -3,13 +3,14 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import spacy
 from werkzeug.utils import secure_filename
+from pdfminer.high_level import extract_text
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Allowed file extensions for resume uploads
-ALLOWED_EXTENSIONS = {'txt'}
+ALLOWED_EXTENSIONS = {'txt', 'pdf'}
 
 # Ensure the upload folder exists
 UPLOAD_FOLDER = 'uploads'
@@ -98,12 +99,18 @@ def upload():
             resume_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             resume_file.save(resume_path)
             
-            # Read text content from the uploaded text file
-            try:
-                with open(resume_path, 'r', encoding='utf-8') as file:
-                    resume_content = file.read()
-            except Exception as e:
-                return jsonify({'error': f'Error reading text file: {str(e)}'})
+            # Read text content from the uploaded file
+            if filename.endswith('.pdf'):
+                try:
+                    resume_content = extract_text(resume_path)
+                except Exception as e:
+                    return jsonify({'error': f'Error reading PDF file: {str(e)}'})
+            else:
+                try:
+                    with open(resume_path, 'r', encoding='utf-8') as file:
+                        resume_content = file.read()
+                except Exception as e:
+                    return jsonify({'error': f'Error reading text file: {str(e)}'})
             
             # Check if the user already exists
             existing_user = User.query.filter_by(email=email).first()
@@ -122,15 +129,44 @@ def upload():
             # Analyze the resume content
             doc = nlp(resume_content)
             skills = extract_skills(doc)
-            jobs = recommend_jobs(skills)
+            jobs_with_percentage, job_keywords = recommend_jobs_with_percentage(skills)
             
-            return render_template('upload.html', jobs=jobs)
+            # Highlight the keywords in the resume content
+            highlighted_resume_content = highlight_resume_content(resume_content, job_keywords)
+            
+            return render_template('upload.html', resume_content=highlighted_resume_content, jobs=jobs_with_percentage)
         
         return jsonify({'error': 'File type not allowed'})
 
     return render_template('upload.html')
 
+
 # Function to extract skills from resume (example implementation)
+def extract_skills_and_highlight(doc):
+    skills = []
+    job_titles = []  # Example job titles
+    company_names = []  # Example company names
+
+    highlighted_content = []
+
+    for token in doc:
+        token_text = token.text
+        token_lower = token_text.lower()
+
+        if token_text in job_titles:
+            highlighted_content.append(f'<span class="highlight-job-title">{token_text}</span>')
+        elif token_text in company_names:
+            highlighted_content.append(f'<span class="highlight-company">{token_text}</span>')
+        elif token.pos_ in ['NOUN', 'PROPN']:
+            skills.append(token_text)
+            highlighted_content.append(f'<span class="highlight-skill">{token_text}</span>')
+        else:
+            highlighted_content.append(token_text)
+        highlighted_content.append(token.whitespace_)
+
+    highlighted_resume = ''.join(highlighted_content)
+    return skills, highlighted_resume
+
 def extract_skills(doc):
     skills = []
     for token in doc:
@@ -138,11 +174,39 @@ def extract_skills(doc):
             skills.append(token.text)
     return skills
 
-# Function to recommend jobs based on skills (example implementation)
-def recommend_jobs(skills):
-    job_list = ['Software Developer', 'Data Scientist', 'System Analyst','Marketing']
-    recommended_jobs = [job for job in job_list if any(skill.lower() in job.lower() for skill in skills)]
-    return recommended_jobs
+# Function to recommend jobs based on skills with percentage detected
+def recommend_jobs_with_percentage(skills):
+    job_keywords = {
+        'Software Developer': ['software', 'developer', 'programming', 'coding'],
+        'Data Scientist': ['data', 'scientist', 'analysis', 'statistics'],
+        'System Analyst': ['system', 'analyst', 'requirements', 'design'],
+        'Marketing': ['marketing', 'advertising', 'campaign', 'strategy']
+    }
+    
+    recommended_jobs = []
+    for job, keywords in job_keywords.items():
+        detected_skills = [skill for skill in skills if skill.lower() in keywords]
+        percentage_detected = min((len(detected_skills) / len(keywords)) * 10, 100)
+        recommended_jobs.append({'job_title': job, 'percentage_detected': round(percentage_detected, 2)})
+    
+    return recommended_jobs, job_keywords
+
+def highlight_resume_content(resume_content, job_keywords):
+    highlighted_content = resume_content
+    colors = {
+        'Software Developer': '#ff6f61',
+        'Data Scientist': '#ffa500',
+        'System Analyst': '#f7ea48',
+        'Marketing': '#4caf50'
+    }
+
+    for job, keywords in job_keywords.items():
+        for keyword in keywords:
+            highlighted_content = highlighted_content.replace(keyword, f'<span style="background-color: {colors[job]}">{keyword}</span>')
+            highlighted_content = highlighted_content.replace(keyword.capitalize(), f'<span style="background-color: {colors[job]}">{keyword.capitalize()}</span>')
+    
+    return highlighted_content
+
 
 # Dummy function to check user credentials (replace with actual authentication logic)
 def check_user_credentials(email, password):

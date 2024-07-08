@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>ResuMech</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome</h1>
-        <a href="{{ url_for('login') }}">Login</a>
-        <a href="{{ url_for('signup') }}">Sign Up</a>
-    </div>
+    
+    <section class="landing">
+        <div class="container">
+            <h1>Welcome to Resume Analyzer</h1>
+            <div class="button-container">
+                <a class="button" href="{{ url_for('login') }}">Login</a>
+                <a class="button" href="{{ url_for('signup') }}">Sign Up</a>
+            </div>
+        </div>
+    </section>
+
+    
 </body>
 </html>
