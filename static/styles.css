@@ -1,46 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M82.06 592.16C280.81 580.38 410.46 221.95 783.08 214.26 1155.7 206.57 1305.91 85.99 1484.1 85.46' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M578.66 616.19C713.56 605.05 773.54 350.91 1039.42 331.86 1305.3 312.81 1369.13 87.91 1500.18 79.86' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M320.9 662.88C514.95 631.31 607.43 164.04 924.84 159.19 1242.26 154.34 1375.23 270.72 1528.79 271.19' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M729.35 667.74C827.64 640.38 795.39 366.52 1004.26 366.09 1213.13 365.66 1410.36 532.23 1554.07 534.09' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M753.44 648.27C886.25 638.01 954.96 386.71 1210.26 374.05 1465.57 361.39 1543.94 192.71 1667.09 189.25' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-image: linear-gradient(103.91deg, #1F1D2B 21.01%, rgba(57, 81, 191, 0.881));
+  background-color: #252954;
   background-size: cover;
-
 }
-
+  
 .container {
   width: 100%;
   max-width: 400px;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(147, 147, 147, 0.7); /* Adjust opacity to control frosted effect */
+  backdrop-filter: blur(10px); /* Blur effect for frosted glass */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
   border-radius: 10px;
   text-align: center;
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
 }
 
 label {
   display: block;
   margin-bottom: 8px;
   text-align: left;
+  color: white;
+  font-family: "Poppins";
 }
+
+.main-label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: left;
+  color: rgb(86, 86, 86);
+  font-family: "Poppins";
+}
+
+
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="file"] {
-  width: 92%;
+  width: 95%;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #838383;
   border-radius: 5px;
 }
 
@@ -97,31 +106,6 @@ a:hover {
   border-radius: 5px;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.container {
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  text-align: center;
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
 
 .button-container {
   display: flex;
@@ -140,6 +124,7 @@ h1 {
   font-size: 16px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  font-family: "Poppins";
 }
 
 .button:hover {
@@ -157,40 +142,28 @@ h1 {
   }
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.container {
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  text-align: center;
-}
 
 h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  height: 100%;
+  color: white;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  text-align: left;
+.main-h1 {
+  height: 100%;
+  color: rgb(73, 73, 73);
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
 }
+
 
 button {
-  width: 100%;
+  width: 98%;
   padding: 10px;
   background-color: #28a745;
   border: none;
@@ -198,6 +171,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+  font-family: "Poppins";
 }
 
 button:hover {
@@ -409,67 +383,7 @@ pre {
   background-color: #00c217;
 }
 
-.percentage-bar[data-percentage="66"], 
-.percentage-bar[data-percentage="67"], 
-.percentage-bar[data-percentage="68"], 
-.percentage-bar[data-percentage="69"], 
-.percentage-bar[data-percentage="70"], 
-.percentage-bar[data-percentage="71"], 
-.percentage-bar[data-percentage="72"], 
-.percentage-bar[data-percentage="73"], 
-.percentage-bar[data-percentage="74"], 
-.percentage-bar[data-percentage="75"] {
-  background-color: #029d14;
-}
 
-.percentage-bar[data-percentage="76"], 
-.percentage-bar[data-percentage="77"], 
-.percentage-bar[data-percentage="78"], 
-.percentage-bar[data-percentage="79"], 
-.percentage-bar[data-percentage="80"], 
-.percentage-bar[data-percentage="81"], 
-.percentage-bar[data-percentage="82"], 
-.percentage-bar[data-percentage="83"], 
-.percentage-bar[data-percentage="84"], 
-.percentage-bar[data-percentage="85"] {
-  background-color: #00c217;
-}
-
-.percentage-bar[data-percentage="86"], 
-.percentage-bar[data-percentage="87"], 
-.percentage-bar[data-percentage="88"], 
-.percentage-bar[data-percentage="89"], 
-.percentage-bar[data-percentage="90"], 
-.percentage-bar[data-percentage="91"], 
-.percentage-bar[data-percentage="92"], 
-.percentage-bar[data-percentage="93"], 
-.percentage-bar[data-percentage="94"], 
-.percentage-bar[data-percentage="95"] {
-  background-color: #00c217;
-}
-
-.percentage-bar[data-percentage="96"], 
-.percentage-bar[data-percentage="97"], 
-.percentage-bar[data-percentage="98"], 
-.percentage-bar[data-percentage="99"], 
-.percentage-bar[data-percentage="100"]{
-  background-color: #00820f;
-}
-
-
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M82.06 592.16C280.81 580.38 410.46 221.95 783.08 214.26 1155.7 206.57 1305.91 85.99 1484.1 85.46' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M578.66 616.19C713.56 605.05 773.54 350.91 1039.42 331.86 1305.3 312.81 1369.13 87.91 1500.18 79.86' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M320.9 662.88C514.95 631.31 607.43 164.04 924.84 159.19 1242.26 154.34 1375.23 270.72 1528.79 271.19' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M729.35 667.74C827.64 640.38 795.39 366.52 1004.26 366.09 1213.13 365.66 1410.36 532.23 1554.07 534.09' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M753.44 648.27C886.25 638.01 954.96 386.71 1210.26 374.05 1465.57 361.39 1543.94 192.71 1667.09 189.25' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
-  background-size: cover;
-}
 
 .main-container {
   width: 100%;
@@ -479,11 +393,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   text-align: center;
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
 }
 
 .form-and-content {
@@ -554,6 +463,7 @@ h1 {
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
+  font-family: "Poppins";
 }
 
 .exit-button:hover {
