@@ -409,6 +409,54 @@ pre {
   background-color: #00c217;
 }
 
+.percentage-bar[data-percentage="66"], 
+.percentage-bar[data-percentage="67"], 
+.percentage-bar[data-percentage="68"], 
+.percentage-bar[data-percentage="69"], 
+.percentage-bar[data-percentage="70"], 
+.percentage-bar[data-percentage="71"], 
+.percentage-bar[data-percentage="72"], 
+.percentage-bar[data-percentage="73"], 
+.percentage-bar[data-percentage="74"], 
+.percentage-bar[data-percentage="75"] {
+  background-color: #029d14;
+}
+
+.percentage-bar[data-percentage="76"], 
+.percentage-bar[data-percentage="77"], 
+.percentage-bar[data-percentage="78"], 
+.percentage-bar[data-percentage="79"], 
+.percentage-bar[data-percentage="80"], 
+.percentage-bar[data-percentage="81"], 
+.percentage-bar[data-percentage="82"], 
+.percentage-bar[data-percentage="83"], 
+.percentage-bar[data-percentage="84"], 
+.percentage-bar[data-percentage="85"] {
+  background-color: #00c217;
+}
+
+.percentage-bar[data-percentage="86"], 
+.percentage-bar[data-percentage="87"], 
+.percentage-bar[data-percentage="88"], 
+.percentage-bar[data-percentage="89"], 
+.percentage-bar[data-percentage="90"], 
+.percentage-bar[data-percentage="91"], 
+.percentage-bar[data-percentage="92"], 
+.percentage-bar[data-percentage="93"], 
+.percentage-bar[data-percentage="94"], 
+.percentage-bar[data-percentage="95"] {
+  background-color: #00c217;
+}
+
+.percentage-bar[data-percentage="96"], 
+.percentage-bar[data-percentage="97"], 
+.percentage-bar[data-percentage="98"], 
+.percentage-bar[data-percentage="99"], 
+.percentage-bar[data-percentage="100"]{
+  background-color: #00820f;
+}
+
+
 
 body {
   font-family: Arial, sans-serif;
