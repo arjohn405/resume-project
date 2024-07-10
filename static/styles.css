@@ -145,11 +145,14 @@ a:hover {
 
 h1 {
   height: 100%;
-  color: white;
+  color: rgb(0, 80, 119);
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
+  background: linear-gradient(93.51deg, #c2c2c2 2.84%, #dedede 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .main-h1 {
