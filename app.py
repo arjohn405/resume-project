@@ -174,22 +174,31 @@ def extract_skills(doc):
             skills.append(token.text)
     return skills
 
-# Function to recommend jobs based on skills with percentage detected
 def recommend_jobs_with_percentage(skills):
     job_keywords = {
         'Software Developer': ['software', 'developer', 'programming', 'coding'],
         'Data Scientist': ['data', 'scientist', 'analysis', 'statistics'],
         'System Analyst': ['system', 'analyst', 'requirements', 'design'],
-        'Marketing': ['marketing', 'advertising', 'campaign', 'strategy']
+        'Marketing': ['marketing', 'advertising', 'campaign', 'strategy'],
+        'Blockchain Software Developer': ['React.js', 'Node.js', 'front-end development', 'back-end development','blockchain','etherium','solana'],
+        'Database Engineer': ['database management', 'Java', 'Kotlin', 'mobile development'],
+        'Mobile Developer - Android': ['Android','android','digital marketing', 'social media marketing','Mobile Developer '],
+        'Technical Lead': ['Team Leadership & Management', 'Full Stack Web Development', 'Agile Methodologies', 'Cloud Computing (AWS, Azure)', 'Database Management (SQL, NoSQL)', 'Software Architecture Design', 'Project Planning & Execution', 'Problem-solving & Debugging','Lead','team','Team']
     }
     
     recommended_jobs = []
+    
     for job, keywords in job_keywords.items():
-        detected_skills = [skill for skill in skills if skill.lower() in keywords]
-        percentage_detected = min((len(detected_skills) / len(keywords)) * 10, 100)
+        detected_skills = [skill for skill in skills if any(keyword.lower() in skill.lower() for keyword in keywords)]
+        if detected_skills:
+            percentage_detected = min(len(detected_skills) / len(keywords) * 40, 100)
+        else:
+            percentage_detected = 0.0  # If no skills detected, set percentage to 0
+        
         recommended_jobs.append({'job_title': job, 'percentage_detected': round(percentage_detected, 2)})
     
     return recommended_jobs, job_keywords
+
 
 def highlight_resume_content(resume_content, job_keywords):
     highlighted_content = resume_content
@@ -197,7 +206,11 @@ def highlight_resume_content(resume_content, job_keywords):
         'Software Developer': '#ff6f61',
         'Data Scientist': '#ffa500',
         'System Analyst': '#f7ea48',
-        'Marketing': '#4caf50'
+        'Marketing': '#4caf50',
+        'Blockchain Software Developer': '#1e90ff',
+        'Database Engineer': '#8a2be2',
+        'Mobile Developer - Android': '#ff69b4',
+        'Technical Lead': '#20b2aa'
     }
 
     for job, keywords in job_keywords.items():

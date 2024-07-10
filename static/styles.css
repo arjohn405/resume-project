@@ -8,8 +8,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(103.91deg, #1F1D2B 21.01%, rgba(57, 81, 191, 0.881));
-  background-color: #252954;
+  background: rgb(24,0,36);
+  background: linear-gradient(37deg, rgba(24,0,36,1) 11%, rgba(27,5,84,1) 40%, rgba(110,33,158,1) 100%);
   background-size: cover;
 }
   
@@ -56,7 +56,7 @@ input[type="file"] {
 button {
   width: 100%;
   padding: 10px;
-  background-color: #28a745;
+  background: linear-gradient(103.91deg, #9B51E0 21.01%, rgba(48, 129, 237, 0.8) 100%);
   border: none;
   color: #fff;
   font-size: 16px;
@@ -205,6 +205,7 @@ a:hover {
 .recommendations h2 {
   font-size: 20px;
   margin-bottom: 10px;
+  color: #838383;
 }
 
 .recommendations ul {
@@ -223,6 +224,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  color: #838383;
 }
 
 .resume-content {
@@ -302,6 +304,10 @@ pre {
 .percentage-label {
   margin-top: 5px;
   text-align: center;
+}
+
+.percentage-bar[data-percentage="0"] {
+  background-color: #ff1500; /* Adjust color for 0% */
 }
 
 .percentage-bar[data-percentage="0"],
@@ -386,16 +392,66 @@ pre {
   background-color: #00c217;
 }
 
+.percentage-bar[data-percentage="66"], 
+.percentage-bar[data-percentage="67"], 
+.percentage-bar[data-percentage="68"], 
+.percentage-bar[data-percentage="69"], 
+.percentage-bar[data-percentage="70"], 
+.percentage-bar[data-percentage="71"], 
+.percentage-bar[data-percentage="72"], 
+.percentage-bar[data-percentage="73"], 
+.percentage-bar[data-percentage="74"], 
+.percentage-bar[data-percentage="75"] {
+  background-color: #39e550;
+}
+
+.percentage-bar[data-percentage="76"], 
+.percentage-bar[data-percentage="77"], 
+.percentage-bar[data-percentage="78"], 
+.percentage-bar[data-percentage="79"], 
+.percentage-bar[data-percentage="80"], 
+.percentage-bar[data-percentage="81"], 
+.percentage-bar[data-percentage="82"], 
+.percentage-bar[data-percentage="83"], 
+.percentage-bar[data-percentage="84"], 
+.percentage-bar[data-percentage="85"] {
+  background-color: #31e046;
+}
+
+.percentage-bar[data-percentage="86"], 
+.percentage-bar[data-percentage="87"], 
+.percentage-bar[data-percentage="88"], 
+.percentage-bar[data-percentage="89"], 
+.percentage-bar[data-percentage="90"], 
+.percentage-bar[data-percentage="91"], 
+.percentage-bar[data-percentage="92"], 
+.percentage-bar[data-percentage="93"], 
+.percentage-bar[data-percentage="94"], 
+.percentage-bar[data-percentage="95"] {
+  background-color: #2d9b08;
+}
+
+.percentage-bar[data-percentage="96"], 
+.percentage-bar[data-percentage="97"], 
+.percentage-bar[data-percentage="98"], 
+.percentage-bar[data-percentage="99"], 
+.percentage-bar[data-percentage="100"] {
+  background-color: #005201;
+}
+
+
 
 
 .main-container {
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  text-align: center;
+   width: 100%;
+    max-width: 800px;
+    max-height: 100vh; /* Set the maximum height to the viewport height */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    overflow: auto; 
 }
 
 .form-and-content {
