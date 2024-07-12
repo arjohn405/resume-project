@@ -42,9 +42,26 @@
                 {% endfor %}
             </ul>
         </div>
+
+        <h3>Comments and Suggestions:</h3>
+        <table>
+            <thead>
+            </thead>
+            <tbody>
+                {% for comment in comments %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ comment }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+   
+
         <a href="{{ url_for('history') }}" class="history-button">View Upload History</a>
         <a href="{{ url_for('index') }}" class="exit-button">Exit</a>
         
+    </div>  
     </div>
 </body>
 </html>

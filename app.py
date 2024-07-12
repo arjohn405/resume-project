@@ -134,7 +134,13 @@ def upload():
             # Highlight the keywords in the resume content
             highlighted_resume_content = highlight_resume_content(resume_content, job_keywords)
             
-            return render_template('upload.html', resume_content=highlighted_resume_content, jobs=jobs_with_percentage)
+            # Generate comments based on resume content
+            comments = generate_comments(resume_content)
+            
+            return render_template('upload.html', 
+                                   resume_content=highlighted_resume_content, 
+                                   jobs=jobs_with_percentage,
+                                   comments=comments)
         
         return jsonify({'error': 'File type not allowed'})
 
@@ -306,6 +312,22 @@ def user_exists(email):
                 return True
     return False
     
+def generate_comments(resume_content):
+    comments = []
+
+    # Example comments based on simple keyword analysis
+    if 'team' not in resume_content.lower():
+        comments.append("Consider adding more details about your teamwork experience.")
+    if 'project' not in resume_content.lower():
+        comments.append("Mention specific projects you have worked on to showcase your experience.")
+    if 'leadership' not in resume_content.lower():
+        comments.append("Highlight any leadership roles or experiences you have had.")
+    
+    # Additional generic advice
+    comments.append("Ensure your resume is well-formatted and free of typos.")
+    comments.append("Tailor your resume for the specific job you are applying for.")
+    
+    return comments
 
 # Dummy function to save user data (replace with actual logic)
 def save_user_data(name, email, password):

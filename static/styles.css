@@ -447,6 +447,7 @@ pre {
   border-radius: 10px;
   text-align: center;
   overflow: auto; 
+  text-align: left;
 }
 
 .form-and-content {
@@ -611,7 +612,7 @@ h1, h2 {
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  text-decoration: none;
+  text-align: center;
 }
 
 .exit-button:hover,
@@ -626,8 +627,16 @@ h1, h2 {
   padding: 20px;
 }
 
-h1, h2 {
+h1  {
   text-align: center;
+}
+
+h2{
+  text-align: left;
+}
+
+h3{
+  color: #838383;
 }
 
 .uploaded-files-container,
@@ -664,4 +673,30 @@ h1, h2 {
 .history-button:hover {
   background-color: #0056b3;
   text-decoration: none;
+}
+
+.comments {
+  margin-top: 20px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.comments h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.comments table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comments table, .comments th, .comments td {
+  border: 1px solid #ddd;
+}
+.comments th, .comments td {
+  padding: 8px;
+}
+.comments th {
+  background-color: #f2f2f2;
 }
