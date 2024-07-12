@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResuMech - History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="main-h1">Upload History</h1>
+        <h2>Files Uploaded</h2>
+        <div class="uploaded-files-container">
+            {% for file in uploaded_files %}
+            <div class="uploaded-file">{{ file }}</div>
+            {% endfor %}
+        </div>
+        <h2>Trending Jobs</h2>
+        <div class="chart-container">
+            <canvas id="trendingJobsChart"></canvas>
+        </div>
+        <h2>Job Analytics</h2>
+        <div class="recommended-jobs-container">
+            {% for job in recommended_jobs %}
+            <div class="recommended-job">{{ job.job_title }} - {{ job.percentage_detected }}%</div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('upload') }}" class="exit-button">Back to Upload</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var ctx = document.getElementById('trendingJobsChart').getContext('2d');
+            var trendingJobsData = {{ trending_jobs|tojson }};
+            var jobTitles = Object.keys(trendingJobsData);
+            var jobCounts = Object.values(trendingJobsData);
+
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: jobTitles,
+                    datasets: [{
+                        label: 'Trending Jobs',
+                        data: jobCounts,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

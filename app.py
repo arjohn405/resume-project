@@ -230,6 +230,73 @@ def check_user_credentials(email, password):
                 return True
     return False
 
+@app.route('/history')
+def history():
+    uploaded_files = get_uploaded_files()  # Implement this function to fetch uploaded files
+    trending_jobs = get_trending_jobs()  # Implement this function to fetch trending jobs
+    recommended_jobs = get_recommended_jobs()  # Implement this function to fetch recommended jobs
+    
+    return render_template('history.html', 
+                           uploaded_files=uploaded_files, 
+                           trending_jobs=trending_jobs,
+                           recommended_jobs=recommended_jobs)
+
+def get_uploaded_files():
+    # Implement logic to fetch uploaded files
+    return ["resume1.pdf", "resume2.pdf", "resume3.pdf"]
+
+def get_trending_jobs():
+    # Implement logic to fetch trending jobs data
+    return {
+        'Software Developer': 20,
+        'Data Scientist': 15,
+        'System Analyst': 10,
+        'Marketing': 5,
+        'Blockchain Software Developer': 8,
+        'Database Engineer': 7,
+        'Mobile Developer - Android': 12,
+        'Technical Lead': 14
+    }
+
+def get_recommended_jobs():
+    # Implement logic to fetch recommended jobs data
+    return [
+        {'job_title': 'Software Developer', 'percentage_detected': 75},
+        {'job_title': 'Data Scientist', 'percentage_detected': 65},
+        {'job_title': 'System Analyst', 'percentage_detected': 80},
+        {'job_title': 'Marketing', 'percentage_detected': 50}
+    ]
+
+
+def get_uploaded_files():
+    upload_folder = app.config['UPLOAD_FOLDER']
+    uploaded_files = os.listdir(upload_folder)
+    return uploaded_files
+
+
+def get_trending_jobs():
+    # Implement logic to fetch trending jobs data
+    return {
+        'Software Developer': 20,
+        'Data Scientist': 15,
+        'System Analyst': 10,
+        'Marketing': 5,
+        'Blockchain Software Developer': 8,
+        'Database Engineer': 7,
+        'Mobile Developer - Android': 12,
+        'Technical Lead': 14
+    }
+
+def get_recommended_jobs():
+    # Implement logic to fetch recommended jobs data
+    return [
+        {'job_title': 'Software Developer', 'percentage_detected': 75},
+        {'job_title': 'Data Scientist', 'percentage_detected': 65},
+        {'job_title': 'System Analyst', 'percentage_detected': 80},
+        {'job_title': 'Marketing', 'percentage_detected': 50}
+    ]
+
+
 # Dummy function to check if user exists (replace with actual logic)
 def user_exists(email):
     with open(USERS_FILE, 'r') as file:
@@ -238,6 +305,7 @@ def user_exists(email):
             if email == stored_email:
                 return True
     return False
+    
 
 # Dummy function to save user data (replace with actual logic)
 def save_user_data(name, email, password):
