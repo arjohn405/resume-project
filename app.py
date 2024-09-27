@@ -1,3 +1,4 @@
+# Import necessary modules
 import os
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -137,10 +138,14 @@ def upload():
             # Generate comments based on resume content
             comments = generate_comments(resume_content)
             
+            # Calculate the summary rate
+            summary_rate = calculate_summary_rate(skills)
+            
             return render_template('upload.html', 
                                    resume_content=highlighted_resume_content, 
                                    jobs=jobs_with_percentage,
-                                   comments=comments)
+                                   comments=comments,
+                                   summary_rate=summary_rate)
         
         return jsonify({'error': 'File type not allowed'})
 
@@ -248,33 +253,6 @@ def history():
                            recommended_jobs=recommended_jobs)
 
 def get_uploaded_files():
-    # Implement logic to fetch uploaded files
-    return ["resume1.pdf", "resume2.pdf", "resume3.pdf"]
-
-def get_trending_jobs():
-    # Implement logic to fetch trending jobs data
-    return {
-        'Software Developer': 20,
-        'Data Scientist': 15,
-        'System Analyst': 10,
-        'Marketing': 5,
-        'Blockchain Software Developer': 8,
-        'Database Engineer': 7,
-        'Mobile Developer - Android': 12,
-        'Technical Lead': 14
-    }
-
-def get_recommended_jobs():
-    # Implement logic to fetch recommended jobs data
-    return [
-        {'job_title': 'Software Developer', 'percentage_detected': 75},
-        {'job_title': 'Data Scientist', 'percentage_detected': 65},
-        {'job_title': 'System Analyst', 'percentage_detected': 80},
-        {'job_title': 'Marketing', 'percentage_detected': 50}
-    ]
-
-
-def get_uploaded_files():
     upload_folder = app.config['UPLOAD_FOLDER']
     uploaded_files = os.listdir(upload_folder)
     return uploaded_files
@@ -328,6 +306,13 @@ def generate_comments(resume_content):
     comments.append("Tailor your resume for the specific job you are applying for.")
     
     return comments
+
+
+def calculate_summary_rate(skills):
+    # Placeholder logic for calculating summary rate
+    rate = len(skills) * 3  # Example: 5 points for each skill detected
+    return min(rate, 100)  # Cap the rate at 100
+
 
 # Dummy function to save user data (replace with actual logic)
 def save_user_data(name, email, password):

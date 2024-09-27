@@ -1,0 +1,14 @@
+
+John Doe
+123 Main Street, City, Country
+Phone: (123) 456-7890
+Email: john.doe@example.com
+
+-------------------------------------------------
+Software Developer
+-------------------------------------------------
+Skills:
+- Proficient in multiple programming languages including Python, Java, and C++
+- Experience with web development using HTML, CSS, JavaScript, and React.js
+- Strong understanding of software development life cycle and agile methodologies
+- Excellent problem-solving skills and attention to detail

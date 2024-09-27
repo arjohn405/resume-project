@@ -627,14 +627,9 @@ h1, h2 {
   padding: 20px;
 }
 
-h1  {
+h1, h2 {
   text-align: center;
 }
-
-h2{
-  text-align: left;
-}
-
 h3{
   color: #838383;
 }
@@ -700,3 +695,12 @@ h3{
 .comments th {
   background-color: #f2f2f2;
 }
+
+.summary-rate {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
